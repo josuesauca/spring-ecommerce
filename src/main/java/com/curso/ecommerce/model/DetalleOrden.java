@@ -1,31 +1,39 @@
 package com.curso.ecommerce.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
+@NoArgsConstructor
+@AllArgsConstructor
 @Setter
+@Entity
+@Table(name = "detalles")
 
 public class DetalleOrden {
-	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String nombre;
 	private Double cantidad;
 	private Double precio;
 	private Double total;
 
-	public DetalleOrden() {
-		// TODO Auto-generated constructor stub
-	}
+	@OneToOne
+	private Orden orden;
 
-	public DetalleOrden(Integer id, String nombre, Double cantidad, Double precio, Double total) {
-		super();
-		this.id = id;
-		this.nombre = nombre;
-		this.cantidad = cantidad;
-		this.precio = precio;
-		this.total = total;
-	}
+	@ManyToOne
+	private Producto producto;
 
 	@Override
 	public String toString() {
@@ -34,4 +42,3 @@ public class DetalleOrden {
 	}
 
 }
-
