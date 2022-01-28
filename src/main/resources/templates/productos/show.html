@@ -61,7 +61,7 @@
 						<td th:text="${producto.getPrecio()}"></td>
 						
 						<td><a class="btn btn-warning" th:href="@{productos/edit/{id}(id=${producto.getId()} ) }">Editar</a> </td>
-						<td><a class="btn btn-danger" href="">Eliminar</a> </td>
+						<td><a class="btn btn-danger" th:href="@{productos/delete/{id}(id=${producto.getId()} ) }">Eliminar</a> </td>
 					</tr>
 				</th:block>
 			</tbody>
